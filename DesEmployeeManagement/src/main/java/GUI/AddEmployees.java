@@ -58,7 +58,7 @@ public class AddEmployees extends javax.swing.JFrame {
                 
                 String SECRET_KEY = KeyGeneratorDES.generateRandomKey();
                 
-                // Giả lập mã hoá dữ liệu
+                // Mã hoá dữ liệu
                 String encryptedData = encryptEmployeeData(fullName, department, position, salary, SECRET_KEY);
 
                 // Tạo đối tượng Employee 

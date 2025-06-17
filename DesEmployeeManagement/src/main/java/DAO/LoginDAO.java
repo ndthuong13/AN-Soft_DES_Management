@@ -26,7 +26,6 @@ public class LoginDAO {
             // khởi tạo connection
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ansoft_employee_db", "root", "123456789");
         } catch (SQLException e) {
-            e.printStackTrace();
             throw e;
         }
         return conn;
