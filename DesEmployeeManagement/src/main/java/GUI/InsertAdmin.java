@@ -6,6 +6,7 @@ package GUI;
 
 import Controller.AdminController;
 import Encrypt.DES;
+import Encrypt.KeyGeneratorDES;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,8 +14,7 @@ import javax.swing.JOptionPane;
  * @author van46
  */
 public class InsertAdmin extends javax.swing.JFrame {
-    
-    private static final String SECRET_KEY = "12345678";
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(InsertAdmin.class.getName());
 
     /**
@@ -24,6 +24,7 @@ public class InsertAdmin extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -147,33 +148,32 @@ public class InsertAdmin extends javax.swing.JFrame {
 
     private void addNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewUserActionPerformed
         // TODO add your handling code here: 
-         String username = jTextField1.getText().trim();
-    String password = jTextField2.getText().trim();
-    String role = roleUser.getSelectedItem().toString();
+        String username = jTextField1.getText().trim();
+        String password = jTextField2.getText().trim();
+        String role = roleUser.getSelectedItem().toString();
 
-    if (username.isEmpty() || password.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Username and password cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    try {
-        // Giả sử bạn có lớp DES có phương thức encrypt(String plaintext)
-        String encryptedPassword = DES.encrypt(password, SECRET_KEY);
-
-        // Gửi đến lớp xử lý thêm admin
-        boolean success = AdminController.insertNewAdmin(username, encryptedPassword, role);
-
-        if (success) {
-            JOptionPane.showMessageDialog(this, "New user added successfully");
-            jTextField1.setText("");
-            jTextField2.setText("");
-        } else {
-            JOptionPane.showMessageDialog(this, "Failed to add user", "Error", JOptionPane.ERROR_MESSAGE);
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Username and password cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-    } catch (Exception ex) {
-        logger.severe("Error while adding user: " + ex.getMessage());
-        JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
+
+        try {
+            String SECRET_KEY = KeyGeneratorDES.generateRandomKey();
+            String encryptedPassword = DES.encrypt(password, SECRET_KEY);
+
+            boolean success = AdminController.insertNewAdmin(username, encryptedPassword, role, SECRET_KEY);
+
+            if (success) {
+                JOptionPane.showMessageDialog(this, "New user added successfully");
+                jTextField1.setText("");
+                jTextField2.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to add user", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception ex) {
+            logger.severe("Error while adding user: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_addNewUserActionPerformed
 
     /**

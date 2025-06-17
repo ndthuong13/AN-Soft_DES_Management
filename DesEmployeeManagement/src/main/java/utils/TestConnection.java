@@ -15,13 +15,13 @@ import java.sql.Statement;
 
 
 public class TestConnection {
-
+//
 //    public static void main(String[] args) {
 //        try (Connection conn =DataBaseConnection.getConnection()) {
 //            if (conn != null) {
 //                try (Statement stmt = conn.createStatement()) {
 //                    stmt.executeQuery("SELECT 1");
-//                    System.out.println("Kết nối thật sự thành công!");
+//                    System.out.println("Kết nối thành công!");
 //                }
 //            }
 //        } catch (SQLException e) {

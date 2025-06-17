@@ -20,8 +20,6 @@ import utils.DataBaseConnection;
 
 public class LoginDAO {
 
-    private static final String SECRET_KEY = "ansecure"; // khóa DES
-
     public static Connection getConnection() throws SQLException {
         Connection conn = null;
         try {
@@ -34,7 +32,28 @@ public class LoginDAO {
         return conn;
     }
 
+    public String getSecretKeyForUser(String username) {
+        String sql = "SELECT secret_key FROM users WHERE username=?";
+        try (Connection conn = DataBaseConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("secret_key");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public boolean login(String username, String password) {
+
+        String SECRET_KEY = getSecretKeyForUser(username);
+        if (SECRET_KEY == null) {
+            JOptionPane.showMessageDialog(null, "Tài khoản không tồn tại hoặc thiếu khoá mã hoá!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
         String encryptedPassword = DES.encrypt(password, SECRET_KEY);
         String sql = "SELECT * FROM users WHERE username=? AND password=?";
 
@@ -62,27 +81,4 @@ public class LoginDAO {
         Session.isLoggedIn = false;
         return false;
     }
-
-//    public boolean login(String username, String password) {
-//        String encryptedPassword = DES.encrypt(password, SECRET_KEY);
-//        String sql = "SELECT * FROM users WHERE username=? AND password=?";
-//
-//        try (Connection conn = DataBaseConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-//
-//            stmt.setString(1, username);
-//            stmt.setString(2, encryptedPassword);
-//
-//            ResultSet rs = stmt.executeQuery();
-//            if (rs.next()) {
-//                Session.isLoggedIn = true;
-//                return true;
-//            }
-//
-//        } catch (SQLException e) {
-//            JOptionPane.showMessageDialog(null, "Không thể kết nối cơ sở dữ liệu!", "Lỗi", JOptionPane.ERROR_MESSAGE);
-//            return false;
-//        }
-//        Session.isLoggedIn = false;
-//        return false;
-//    }
 }

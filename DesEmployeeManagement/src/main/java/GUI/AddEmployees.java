@@ -61,7 +61,7 @@ public class AddEmployees extends javax.swing.JFrame {
                 // Giả lập mã hoá dữ liệu
                 String encryptedData = encryptEmployeeData(fullName, department, position, salary, SECRET_KEY);
 
-                // Tạo đối tượng Employee (không cần id vì có thể tự tăng ở DAO hoặc DB)
+                // Tạo đối tượng Employee 
                 model.Employee emp = new model.Employee(fullName, position, department, salary);
                 emp.setEncryptedData(encryptedData);
                 emp.setSecret_key(SECRET_KEY);
@@ -69,7 +69,7 @@ public class AddEmployees extends javax.swing.JFrame {
                 boolean success = EmployeeDAO.addEmployee(emp);
                 if (success) {
                     JOptionPane.showMessageDialog(this, "Đã thêm nhân viên thành công!", "Thành công", JOptionPane.INFORMATION_MESSAGE);
-                    parent.reloadTable();  // <- Cập nhật lại bảng ở DesGUI
+                    parent.reloadTable();  // Cập nhật lại bảng ở DesGUI
                     this.dispose();
                     // reset form
                 } else {

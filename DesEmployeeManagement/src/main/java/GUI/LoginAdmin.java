@@ -157,8 +157,8 @@ public class LoginAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_UsernameFieldActionPerformed
 
     private void SigninButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SigninButtonActionPerformed
-        String username = UsernameField.getText();
-        String password = new String(PasswordField.getPassword());
+        String username = UsernameField.getText().trim();
+        String password = new String(PasswordField.getPassword()).trim();
         if (username.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin đăng nhập!", "Thiếu thông tin", JOptionPane.WARNING_MESSAGE);
 

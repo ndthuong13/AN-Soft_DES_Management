@@ -61,13 +61,11 @@ public class DesGUI extends javax.swing.JFrame {
             }
         };
 
-        // Cột "Mức lương" là cột số 4 (index bắt đầu từ 0)
         EmployeeTable.getColumnModel().getColumn(4).setCellRenderer(salaryRenderer);
-
     }
 
     public void reloadTable() {
-        loadEmployeeData(); // Hàm này đã cập nhật lại dữ liệu từ cơ sở dữ liệu và gán cho employeeList
+        loadEmployeeData(); // Hàm này cập nhật lại dữ liệu từ cơ sở dữ liệu và gán cho employeeList
     }
 
     private void loadEmployeeData() {
@@ -99,6 +97,7 @@ public class DesGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         LogOutButton = new javax.swing.JButton();
@@ -117,6 +116,9 @@ public class DesGUI extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         DecryptedEmployee = new javax.swing.JTextArea();
         ReloadTable = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản lý nhân viên");
@@ -310,14 +312,19 @@ public class DesGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel7.setText("Thông tin được giải mã");
+        jLabel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
@@ -329,15 +336,17 @@ public class DesGUI extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(128, 128, 128)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(jLabel1)))))
-                        .addGap(13, 13, 13))
+                                        .addComponent(jLabel1))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ChangeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -352,7 +361,7 @@ public class DesGUI extends javax.swing.JFrame {
                         .addGap(248, 248, 248)
                         .addComponent(LogOutButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,9 +388,11 @@ public class DesGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(SecretKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
@@ -391,7 +402,7 @@ public class DesGUI extends javax.swing.JFrame {
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
         // TODO add your handling code here:
-        AddEmployees addEmpForm = new AddEmployees(DesGUI.this); 
+        AddEmployees addEmpForm = new AddEmployees(DesGUI.this);
         addEmpForm.setVisible(true);
 
     }//GEN-LAST:event_AddButtonActionPerformed
@@ -402,7 +413,7 @@ public class DesGUI extends javax.swing.JFrame {
 
         if (selectedRow == -1) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn một nhân viên để chỉnh sửa.");
-       
+
             return;
         }
 
@@ -477,6 +488,7 @@ public class DesGUI extends javax.swing.JFrame {
         fileChooser.setDialogTitle("Chọn nơi lưu file Excel");
         int userSelection = fileChooser.showSaveDialog(this);
         int targetColumnIndex = 5;
+//        int[] columnsToExport = {5, 6};
 
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToSave = fileChooser.getSelectedFile();
@@ -489,13 +501,12 @@ public class DesGUI extends javax.swing.JFrame {
             try (Workbook workbook = new XSSFWorkbook()) {
                 Sheet sheet = workbook.createSheet("File mã hoá");
 
-                //DefaultTableModel model = (DefaultTableModel) EmployeeTable.getModel();
                 // Ghi tiêu đề
                 Row headerRow = sheet.createRow(0);
                 headerRow.createCell(0).setCellValue(EmployeeTable.getColumnName(targetColumnIndex));
-//                for (int i = 0; i < model.getColumnCount(); i++) {
-//                    Cell cell = headerRow.createCell(i);
-//                    cell.setCellValue(model.getColumnName(i));
+//                for (int i = 0; i < columnsToExport.length; i++) {
+//                    int colIndex = columnsToExport[i];
+//                    headerRow.createCell(i).setCellValue(EmployeeTable.getColumnName(colIndex));
 //                }
 
                 // Ghi từng dòng dữ liệu
@@ -504,11 +515,12 @@ public class DesGUI extends javax.swing.JFrame {
                     Row row = sheet.createRow(i + 1);
                     row.createCell(0).setCellValue(value != null ? value.toString() : "");
                 }
-//                for (int i = 0; i < model.getRowCount(); i++) {
-//                    Row row = sheet.createRow(i + 1);
-//                    for (int j = 0; j < model.getColumnCount(); j++) {
-//                        Object value = model.getValueAt(i, j);
-//                        row.createCell(j).setCellValue(value != null ? value.toString() : "");
+//                for (int row = 0; row < EmployeeTable.getRowCount(); row++) {
+//                    Row excelRow = sheet.createRow(row + 1);
+//                    for (int i = 0; i < columnsToExport.length; i++) {
+//                        int colIndex = columnsToExport[i];
+//                        Object value = EmployeeTable.getValueAt(row, colIndex);
+//                        excelRow.createCell(i).setCellValue(value != null ? value.toString() : "");
 //                    }
 //                }
 
@@ -548,7 +560,7 @@ public class DesGUI extends javax.swing.JFrame {
 
     private void ReloadTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReloadTableActionPerformed
         // TODO add your handling code here:
-        loadEmployeeData(); 
+        loadEmployeeData();
     }//GEN-LAST:event_ReloadTableActionPerformed
 
     /**
@@ -591,6 +603,8 @@ public class DesGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

@@ -1,4 +1,3 @@
-GUI\DetailEmployees$2.class
 GUI\DesGUI$11.class
 GUI\DesGUI.class
 GUI\ChangeDetails.class
@@ -15,7 +14,6 @@ GUI\InsertAdmin$2.class
 GUI\LoginAdmin$4.class
 model\Employee.class
 Controller\AdminController.class
-GUI\DetailEmployees$4.class
 GUI\LoginAdmin$1.class
 GUI\LoginAdmin.class
 GUI\DesGUI$8.class
@@ -25,11 +23,9 @@ GUI\DesGUI$10.class
 GUI\ChangeDetails$2.class
 utils\TestConnection.class
 GUI\InsertAdmin$4.class
-GUI\DetailEmployees$1.class
 GUI\AddEmployees.class
 GUI\LoginAdmin$3.class
 GUI\DesGUI$2.class
-GUI\DetailEmployees$5.class
 GUI\DesGUI$9.class
 GUI\LoginAdmin$2.class
 DAO\EmployeeDAO.class
@@ -38,7 +34,5 @@ GUI\LoginAdmin$Session.class
 main\DesEmployeeManagement.class
 GUI\InsertAdmin$1.class
 GUI\DesGUI$4.class
-GUI\DetailEmployees.class
 DAO\LoginDAO.class
 GUI\InsertAdmin.class
-GUI\DetailEmployees$3.class
